@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <h1 className="mb-4">Gallary</h1>
-      <h2 className="mb-4">{count}</h2>
+      <small className="align-self-start mt-4">{count}</small>
       <List items={state.items} />
     </>
   );

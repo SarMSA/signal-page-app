@@ -56,6 +56,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isCollapse: action.payload.bool,
+        input: { path: action.payload.url },
       };
     default:
       return state;

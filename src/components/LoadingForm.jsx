@@ -46,7 +46,7 @@ export default function LoadingForm() {
         ).then(() => {
           // dispatch({ type: "setItem" });
           read();
-          dispatch({ type: "collapse", payload: { bool: false } });
+          dispatch({ type: "collapse", payload: { bool: false, url: null } });
         });
       });
   };
