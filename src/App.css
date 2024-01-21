@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+@media (min-width: 992px) {
+  .dropdown-menu {
+    left: auto !important;
+    right: 0
+  }
+  
+}

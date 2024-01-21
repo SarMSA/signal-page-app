@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Card from "./components/Card";
+import { useMemo, useContext, useEffect } from "react";
+import { Context } from "./context/FirebaseContext";
+import { useAuthContext } from "./context/AuthContext";
+import List from "./components/List";
 
 function App() {
+  // const [state, dispatch] = useReducer(reducer, initialState);
+  const { state } = useContext(Context);
+  // const { authethy } = useAuthContext();
+
+  const count = useMemo(() => {
+    return `you have ${state.items.length} image${
+      state.items.length > 1 ? "s" : ""
+    }`;
+  }, [state.items]);
+
+  // useEffect(() => {
+  //   read();
+  //   authethy();
+  // }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1 className="mb-4">Gallary</h1>
+      <h2 className="mb-4">{count}</h2>
+      <List items={state.items} />
+    </>
   );
 }
 
