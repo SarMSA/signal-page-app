@@ -14,14 +14,22 @@ const Preview = () => {
   return (
     path && (
       <div
-        className=""
         style={{
-          backgroundImage: `url(${path})`,
-          backgroundSize: "cover",
+          backgroundColor: "#d4cbcb",
+          borderRadius: "20px",
           height: "18rem",
           width: "18rem",
         }}
-      ></div>
+      >
+        <img
+          src={path}
+          style={{
+            borderRadius: "5px",
+          }}
+          className="card-img-top h-100 w-100"
+          alt={`preview`}
+        />
+      </div>
     )
   );
 };
@@ -55,7 +63,7 @@ export default function LoadingForm() {
     state.isCollapse && (
       <>
         <h2 className="mb-4">Upload Stock Image</h2>
-        <div className="d-flex justify-content-around align-items-center">
+        <div className="d-flex justify-content-around align-items-center mb-5">
           <Preview />
           <form className="row g-3 w-50 text-center" onSubmit={onSubmitValue}>
             <div className="col">
