@@ -19,6 +19,7 @@ const Preview = () => {
           borderRadius: "20px",
           height: "18rem",
           width: "18rem",
+          marginBottom: "2rem",
         }}
       >
         <img
@@ -45,29 +46,38 @@ export default function LoadingForm() {
   };
   const onSubmitValue = (e) => {
     e.preventDefault();
-    uploadFile(state.input)
-      .then(downloadFile)
-      .then((url) => {
-        writeDoc(
-          { ...input, path: url, user: username.toLowerCase() },
-          "stocks"
-        ).then(() => {
-          // dispatch({ type: "setItem" });
-          read();
-          dispatch({ type: "collapse", payload: { bool: false, url: null } });
+    if (!!currentUser) {
+      uploadFile(state.input)
+        .then(downloadFile)
+        .then((url) => {
+          writeDoc(
+            { ...input, path: url, user: username.toLowerCase() },
+            "stocks"
+          ).then(() => {
+            // dispatch({ type: "setItem" });
+            read();
+            dispatch({ type: "collapse", payload: { bool: false, url: null } });
+          });
         });
-      });
+    } else {
+      dispatch({ type: "collapse", payload: { bool: false, url: null } });
+      alert("please, log in first !");
+    }
   };
 
   return (
     state.isCollapse && (
       <>
         <h2 className="mb-4">Upload Stock Image</h2>
-        <div className="d-flex justify-content-around align-items-center mb-5">
+        <div className="d-flex flex-column flex-md-row justify-content-around  align-items-center mb-5">
           <Preview />
-          <form className="row g-3 w-50 text-center" onSubmit={onSubmitValue}>
+          <form
+            className="row g-3 w-50 text-center"
+            onSubmit={onSubmitValue}
+            name="loadingForm"
+          >
             <div className="col">
-              <label htmlFor="dynamicTitle" className="visually-hidden">
+              <label htmlFor="title" className="visually-hidden">
                 title
               </label>
               <input
@@ -81,7 +91,7 @@ export default function LoadingForm() {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="formFile" className="visually-hidden">
+              <label htmlFor="file" className="visually-hidden">
                 choosing file
               </label>
               <input

@@ -12,16 +12,23 @@ export default function SingleImage() {
 
   return (
     <>
-      <button
-        className="btn btn-link mb-5"
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        Back
-      </button>
-      <div className="d-flex justify-content-center mb-0">
-        <Card {...item} />
+      <div className="d-flex flex-column justify-content-center mb-0">
+        <button
+          className="btn btn-link mb-5"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Back
+        </button>
+        <Card
+          path={item.path}
+          title={item.title}
+          createdAt={item.createdAt}
+          user={item.user}
+          id={item.id}
+          aspectRatio="1/1"
+        />
       </div>
     </>
   );

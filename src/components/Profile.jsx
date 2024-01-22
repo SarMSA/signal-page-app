@@ -8,9 +8,9 @@ export default function Profile() {
     <>
       <h1 className="text-center">Profile</h1>
       <hr style={{ width: "50%", margin: "3rem auto" }} />
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="d-flex flex-column flex-md-row justify-content-center align-items-center">
         <img
-          style={{ borderRadius: "4px" }}
+          style={{ borderRadius: "4px", marginBottom: "2rem" }}
           src={currentUser?.photoURL}
           alt={currentUser?.displayName}
           width={"150"}
